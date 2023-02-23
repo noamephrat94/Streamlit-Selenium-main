@@ -67,7 +67,7 @@ def get_news(driver, search_term):
                 except Exception as e:
                     age = None
                 st.subheader(title)
-                st.markdown("st.markdown : " + paragraph)
+                st.markdown(paragraph)
                 if age:
                     st.text(age)
             st.markdown("""---""")
@@ -81,7 +81,7 @@ def main():
     files = [f for f in os.listdir('.') if os.path.isfile(f)]
     st.write(files)
     search_term = st.text_input("Enter search term")
-    run = st.button(label="Search Google News")
+    run = st.button(label="Search News")
     if run:
         driver = get_driver()
         data = get_news(driver, search_term)
