@@ -45,11 +45,13 @@ def get_news(driver, search_term):
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
-        search = soup.find_all('div', class_="SoaBEf")
-        for h in search:
-            # st.write(h)
-            links.append(h.a.get('href'))
-    st.write(links)
+        search = soup.findAll('div', class_="SoaBEf")
+        for d in search:
+            url = d.find('a')['href']
+            title = d.findAll('span', dir="ltr")[1].text
+            paragraph = d.findAll('span', dir="ltr")[2].text
+            age = d.findAll('span')[4].text
+            st.write([url, title, paragraph, age])
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
