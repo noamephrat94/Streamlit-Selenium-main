@@ -50,13 +50,14 @@ def get_news(driver, search_term):
         search = soup.findAll('div', class_="news-card-body card-with-cluster")
         # st.code(soup)
         for d in search:
+            st.code(d)
             # img = d.find('div', 'image right').find('a')['href']
             # st.image(img)
-            url = d.find('a', class_='title')['href']
-            title = d.find('a', class_='title')['href'].text
-            paragraph = d.find('div', class_='snippet').text
-            age = d.find('div', class_='source set_top').findAll("span")[-1].text
-            st.write([url, title, paragraph, age])
+            # url = d.find('a', class_='title')['href']
+            # title = d.find('a', class_='title')['href'].text
+            # paragraph = d.find('div', class_='snippet').text
+            # age = d.find('div', class_='source set_top').findAll("span")[-1].text
+            # st.write([url, title, paragraph, age])
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
