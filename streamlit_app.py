@@ -61,9 +61,10 @@ def get_news(driver, search_term):
                     st.write('No Image')
             with col2:
                 url = d.find('a', class_='title')['href']
-                title = d.find('a', class_='title')['href']
+                title = d.find('a', class_='title').text
                 paragraph = d.find('div', class_='snippet').text
-                age = d.find('div', class_='source set_top').findAll("span")[-1].text
+                # age = d.find('div', class_='source set_top').findAll("span")[-1].text
+                age = d.find('div', class_='source set_top')
                 # st.write([url, title, paragraph, age])
                 st.subheader(title)
                 st.text(paragraph)
