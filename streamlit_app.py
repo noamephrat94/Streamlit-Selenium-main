@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import streamlit.components.v1 as components
 import pandas as pd
+import countries
 import os
 
 @st.cache_resource
