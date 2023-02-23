@@ -47,7 +47,7 @@ def get_news(driver, search_term):
 
         search = soup.find_all('div', class_="yuRUbf")
         for h in search:
-            st.write(h)
+            # st.write(h)
             links.append(h.a.get('href'))
     st.write(links)
     return df
