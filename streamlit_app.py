@@ -54,7 +54,7 @@ def get_news(driver, search_term):
             # st.code(d)
             with col1:
                 try:
-                    img = d.find('div', 'image right').find('a')['href']
+                    img = d.find('div', 'image right').find('img')['src']
                     st.image(img)
                     st.text(img)
                 except Exception as e:
