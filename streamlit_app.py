@@ -40,7 +40,7 @@ def get_news(driver, search_term):
     # Specify number of pages on google search, each page contains 10 #links
     n_pages = 20
     for page in range(1, n_pages):
-        url = "http://www.google.com/search?q=" + search_term + "&tbm=nws" + "&start=" + str((page - 1) * 10)
+        url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
         st.write(url)
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
