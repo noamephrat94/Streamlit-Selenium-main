@@ -34,6 +34,7 @@ def create_df():
 
 def get_news(driver, search_term):
     # Query to obtain links
+    search_term = search_term.replace(" ", "%20")
     df = create_df()
     query = 'comprehensive guide to web scraping in python'
     links = []  # Initiate empty list to capture final results
@@ -41,7 +42,7 @@ def get_news(driver, search_term):
     n_pages = 2
     for page in range(1, n_pages):
         # url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
-        url = f'https://www.bing.com/news/search?q={search_term}&FORM=HDRSC7'
+        url = f'https://www.bing.com/news/search?q={search_term}&qft=sortbydate%3d%221%22&FORM=HDRSC7'
         st.write(url)
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
