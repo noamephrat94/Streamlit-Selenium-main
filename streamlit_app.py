@@ -53,17 +53,20 @@ def get_news(driver, search_term):
             col1, col2 = st.columns([1, 3])
             # st.code(d)
             with col1:
-                img = d.find('div', 'image right').find('a')['href']
-                st.image(img)
+                try:
+                    img = d.find('div', 'image right').find('a')['href']
+                    st.image(img)
+                    st.text(img)
+                except Exception as e:
+                    st.write('No Image')
             with col2:
                 url = d.find('a', class_='title')['href']
-                title = d.find('a', class_='title')['href'].text
+                title = d.find('a', class_='title')['href']
                 paragraph = d.find('div', class_='snippet').text
                 age = d.find('div', class_='source set_top').findAll("span")[-1].text
-                st.write([url, title, paragraph, age])
+                # st.write([url, title, paragraph, age])
                 st.subheader(title)
                 st.text(paragraph)
-                st.text(age)
                 st.text(age)
     return df
 def create_ds(data, search_term):
