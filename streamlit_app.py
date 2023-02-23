@@ -46,18 +46,25 @@ def get_news(driver, search_term):
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
-        st.code(soup)
+        # st.code(soup)
         search = soup.findAll('div', class_="news-card-body card-with-cluster")
         # st.code(soup)
         for d in search:
-            st.code(d)
-            # img = d.find('div', 'image right').find('a')['href']
-            # st.image(img)
-            # url = d.find('a', class_='title')['href']
-            # title = d.find('a', class_='title')['href'].text
-            # paragraph = d.find('div', class_='snippet').text
-            # age = d.find('div', class_='source set_top').findAll("span")[-1].text
-            # st.write([url, title, paragraph, age])
+            col1, col2 = st.columns([1, 3])
+            # st.code(d)
+            with col1:
+                img = d.find('div', 'image right').find('a')['href']
+                st.image(img)
+            with col2:
+                url = d.find('a', class_='title')['href']
+                title = d.find('a', class_='title')['href'].text
+                paragraph = d.find('div', class_='snippet').text
+                age = d.find('div', class_='source set_top').findAll("span")[-1].text
+                st.write([url, title, paragraph, age])
+                st.subheader(title)
+                st.text(paragraph)
+                st.text(age)
+                st.text(age)
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
