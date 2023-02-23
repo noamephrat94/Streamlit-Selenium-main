@@ -46,7 +46,7 @@ def get_news(driver, search_term):
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
-        search = soup.findAll('a', class_="WlydOe")
+        # search = soup.findAll('a', class_="WlydOe")
         st.write(soup)
         # for d in search:
         #     st.write(d)
