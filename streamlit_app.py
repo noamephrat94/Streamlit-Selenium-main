@@ -54,18 +54,15 @@ def get_news(driver, search_term):
             # st.code(d)
             with col1:
                 try:
-                    img = d.find('div', 'image right').find('img')['src']
+                    img = d.find('div', 'image right').find('a').find('img')['src']
                     st.image(img)
-                    st.text(img)
                 except Exception as e:
                     st.write('No Image')
             with col2:
                 url = d.find('a', class_='title')['href']
                 title = d.find('a', class_='title').text
                 paragraph = d.find('div', class_='snippet').text
-                # age = d.find('div', class_='source set_top').findAll("span")[-1].text
-                age = d.find('div', class_='source set_top')
-                # st.write([url, title, paragraph, age])
+                age = d.find('div', class_='source set_top').findAll("span")[-1].text
                 st.subheader(title)
                 st.text(paragraph)
                 st.text(age)
