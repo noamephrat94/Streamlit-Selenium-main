@@ -33,42 +33,22 @@ def create_df():
 
 
 def get_news(driver, search_term):
+    # Query to obtain links
     df = create_df()
-    for country in countries.countries:
-        st.title(country)
-        url = f'https://www.google.com/search?q={search_term}%20{country}&tbm=nws'
+    query = 'comprehensive guide to web scraping in python'
+    links = []  # Initiate empty list to capture final results
+    # Specify number of pages on google search, each page contains 10 #links
+    n_pages = 20
+    for page in range(1, n_pages):
+        url = "http://www.google.com/search?q=" + query + "&start=" + str((page - 1) * 10)
         driver.get(url)
-        driver.maximize_window()
-        # scroll_page(driver)
-        time.sleep(3)
-        html_source = driver.page_source
-        soup = BeautifulSoup(html_source, 'html.parser')
-        nav = soup.findAll("div", role="navigation")[1]
-        pages = nav.findAll("td")
-        url = ''
-        for p in range(2, 3):
-            if url:
-                driver.get(url)
-                time.sleep(3)
-                html_source = driver.page_source
-                soup = BeautifulSoup(html_source, 'html.parser')
-            data = soup.findAll('div', class_='SoaBEf')
-            data = data[0:5]
-            for d in data:
-                url = d.find('a')['href']
-                title = d.findAll('span', dir="ltr")[1].text
-                paragraph = d.findAll('span', dir="ltr")[2].text
-                age = d.findAll('span')[4].text
-                print(url, "\n", title, "\n", paragraph, "\n", age, "\n")
-                df.loc[len(df)] = [url, title, paragraph, age]
-                st.subheader(title)
-                st.text(paragraph)
-                st.text(age)
-                link = f'[Read Article]({url})'
-                st.markdown(link, unsafe_allow_html=True)
-                st.markdown("""---""")
-            url = "https://www.google.com/" + pages[p].find('a')['href']
-    df.to_excel(f'output/{search_term}_{datetime.datetime.now().strftime("%m%d%Y-%H:%M:%S")}.')
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        # soup = BeautifulSoup(r.text, 'html.parser')
+
+        search = soup.find_all('div', class_="yuRUbf")
+        for h in search:
+            links.append(h.a.get('href'))
+    st.write(links)
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
