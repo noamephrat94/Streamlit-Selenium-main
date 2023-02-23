@@ -40,13 +40,14 @@ def get_news(driver, search_term):
     # Specify number of pages on google search, each page contains 10 #links
     n_pages = 20
     for page in range(1, n_pages):
-        url = "http://www.google.com/search?q=" + query + "&start=" + str((page - 1) * 10)
+        url = "http://www.google.com/search?q=" + search_term + "&start=" + str((page - 1) * 10)
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
         search = soup.find_all('div', class_="yuRUbf")
         for h in search:
+            st.write(h)
             links.append(h.a.get('href'))
     st.write(links)
     return df
