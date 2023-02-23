@@ -70,6 +70,7 @@ def get_news(driver, search_term):
                 st.markdown("st.markdown : " + paragraph)
                 if age:
                     st.text(age)
+            st.markdown("""---""")
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
