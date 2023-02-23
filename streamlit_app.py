@@ -72,7 +72,7 @@ def create_ds(data, search_term):
 def main():
     import os
     files = [f for f in os.listdir('.') if os.path.isfile(f)]
-    for f in files:
+    st.write(files)
     search_term = st.text_input("Enter search term")
     run = st.button(label="Search Google News")
     if run:
