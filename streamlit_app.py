@@ -39,11 +39,11 @@ def get_news(driver, search_term):
     df = create_df()
     n_pages = 2
     for countrie in countries.countries:
+        time.sleep(5)
         for page in range(1, n_pages):
             st.title(countrie)
             # url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
             url = f'https://www.bing.com/news/search?q={search_term}%20{countrie}&qft=sortbydate%3d%221%22&FORM=HDRSC7'
-            st.write(url)
             driver.get(url)
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             # soup = BeautifulSoup(r.text, 'html.parser')
