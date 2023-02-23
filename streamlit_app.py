@@ -40,6 +40,7 @@ def get_news(driver, search_term):
     n_pages = 2
     for countrie in countries.countries:
         for page in range(1, n_pages):
+            st.title(countrie)
             # url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
             url = f'https://www.bing.com/news/search?q={search_term}%20{countrie}&qft=sortbydate%3d%221%22&FORM=HDRSC7'
             st.write(url)
@@ -74,6 +75,7 @@ def get_news(driver, search_term):
                     link = f'[Read Article]({url})'
                     st.markdown(link, unsafe_allow_html=True)
                 st.markdown("""---""")
+        st.markdown("""---""")
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
