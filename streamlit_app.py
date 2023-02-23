@@ -9,6 +9,8 @@ import countries
 import os
 import time
 import datetime
+from bs4 import BeautifulSoup
+
 
 @st.cache_resource
 def get_driver():
