@@ -38,7 +38,7 @@ def get_news(driver, search_term):
     query = 'comprehensive guide to web scraping in python'
     links = []  # Initiate empty list to capture final results
     # Specify number of pages on google search, each page contains 10 #links
-    n_pages = 1
+    n_pages = 2
     for page in range(1, n_pages):
         url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
         st.write(url)
