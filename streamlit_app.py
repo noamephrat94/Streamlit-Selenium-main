@@ -67,7 +67,7 @@ def get_news(driver, search_term):
                 except Exception as e:
                     age = None
                 st.subheader(title)
-                st.text(paragraph)
+                st.markdown("st.markdown : " + paragraph)
                 if age:
                     st.text(age)
     return df
