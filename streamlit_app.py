@@ -77,9 +77,6 @@ def create_ds(data, search_term):
     df.to_csv(f'output/google_shops_{search_term}.csv')
 
 def main():
-    import os
-    files = [f for f in os.listdir('.') if os.path.isfile(f)]
-    st.write(files)
     search_term = st.text_input("Enter search term")
     run = st.button(label="Search News")
     if run:
