@@ -40,16 +40,17 @@ def get_news(driver, search_term):
     # Specify number of pages on google search, each page contains 10 #links
     n_pages = 2
     for page in range(1, n_pages):
-        url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
+        # url = "http://www.google.com/search?q=" + search_term +"&start=" + str((page - 1) * 10)
+        url = f'https://www.bing.com/news/search?q={search_term}&FORM=HDRSC7'
         st.write(url)
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
-        # search = soup.findAll('a', class_="WlydOe")
-        st.code(soup)
-        # for d in search:
-        #     st.write(d)
+        search = soup.findAll('div', class_="news-card-body card-with-cluster")
+        # st.code(soup)
+        for d in search:
+            st.code(d)
             # url = d.find('a')['href']
             # title = d.findAll('span', dir="ltr")[1].text
             # paragraph = d.findAll('span', dir="ltr")[2].text
