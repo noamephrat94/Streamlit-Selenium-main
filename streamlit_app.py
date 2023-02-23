@@ -45,7 +45,7 @@ def get_news(driver, search_term):
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
-        search = soup.find_all('div', class_="yuRUbf")
+        search = soup.find_all('div', class_="SoaBEf")
         for h in search:
             # st.write(h)
             links.append(h.a.get('href'))
