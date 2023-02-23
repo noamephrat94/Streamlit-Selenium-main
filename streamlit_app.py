@@ -45,9 +45,9 @@ def get_news(driver, search_term):
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
 
-        search = soup.findAll('div', class_="mCBkyc ynAwRc MBeuO nDgy9d")
+        search = soup.findAll('div', class_="SoaBEf")
         for d in search:
-            st.write(d.text)
+            st.write(d)
             # url = d.find('a')['href']
             # title = d.findAll('span', dir="ltr")[1].text
             # paragraph = d.findAll('span', dir="ltr")[2].text
