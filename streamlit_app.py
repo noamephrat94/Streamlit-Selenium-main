@@ -46,7 +46,7 @@ def get_news(driver, search_term):
         driver.get(url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         # soup = BeautifulSoup(r.text, 'html.parser')
-
+        st.code(soup)
         search = soup.findAll('div', class_="news-card-body card-with-cluster")
         # st.code(soup)
         for d in search:
