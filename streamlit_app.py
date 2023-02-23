@@ -47,7 +47,7 @@ def get_news(driver, search_term):
         # soup = BeautifulSoup(r.text, 'html.parser')
 
         # search = soup.findAll('a', class_="WlydOe")
-        st.write(soup)
+        st.code(soup)
         # for d in search:
         #     st.write(d)
             # url = d.find('a')['href']
