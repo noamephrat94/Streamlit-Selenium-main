@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import streamlit.components.v1 as components
 import pandas as pd
+import os
 
 @st.cache_resource
 def get_driver():
@@ -69,6 +70,9 @@ def create_ds(data, search_term):
     df.to_csv(f'output/google_shops_{search_term}.csv')
 
 def main():
+    import os
+    files = [f for f in os.listdir('.') if os.path.isfile(f)]
+    for f in files:
     search_term = st.text_input("Enter search term")
     run = st.button(label="Search Google News")
     if run:
