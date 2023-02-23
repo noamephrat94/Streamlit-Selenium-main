@@ -62,10 +62,14 @@ def get_news(driver, search_term):
                 url = d.find('a', class_='title')['href']
                 title = d.find('a', class_='title').text
                 paragraph = d.find('div', class_='snippet').text
-                age = d.find('div', class_='source set_top').findAll("span")[-1].text
+                try:
+                    age = d.find('div', class_='source set_top').findAll("span")[-1].text
+                except Exception as e:
+                    age = None
                 st.subheader(title)
                 st.text(paragraph)
-                st.text(age)
+                if age:
+                    st.text(age)
     return df
 def create_ds(data, search_term):
     df = pd.DataFrame(data)
